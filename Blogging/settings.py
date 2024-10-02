@@ -103,8 +103,8 @@ WSGI_APPLICATION = 'Blogging.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 import pymysql
-
 pymysql.install_as_MySQLdb()
+
 
 if DEBUG:
         DATABASES = {
