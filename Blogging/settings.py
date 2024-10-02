@@ -123,8 +123,7 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('database_url'), 
-        conn_max_age=600, 
-        ssl_require=True
+        
     )
 }
 
