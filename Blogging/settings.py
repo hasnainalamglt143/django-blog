@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=os.getenv("SECRET_KEY")
 print(SECRET_KEY)
 # Environment=os.getenv("ENVIROMENT",default="production")
-Environment=os.getenv("Enviroment","development")
+Environment=os.getenv("Enviroment")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if Environment=="development" :
@@ -106,21 +106,21 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 
-if DEBUG:
-        DATABASES = {
-    'default': {
+# if DEBUG:
+#         DATABASES = {
+#     'default': {
           
-    "ENGINE": "django.db.backends.mysql",
-        "NAME": "blogging",
-        "USER": "root",
-        "PASSWORD": os.getenv("_password"),
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+#     "ENGINE": "django.db.backends.mysql",
+#         "NAME": "blogging",
+#         "USER": "root",
+#         "PASSWORD": os.getenv("_password"),
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
 
-    }
-    }
-else:
-       DATABASES = {
+#     }
+#     }
+
+DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('database_url'), 
         conn_max_age=600, 
