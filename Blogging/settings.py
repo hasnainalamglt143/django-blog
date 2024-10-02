@@ -102,11 +102,12 @@ WSGI_APPLICATION = 'Blogging.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# import pymysql
+import pymysql
 
-# pymysql.install_as_MySQLdb()
+pymysql.install_as_MySQLdb()
 
-DATABASES = {
+if DEBUG:
+        DATABASES = {
     'default': {
           
     "ENGINE": "django.db.backends.mysql",
@@ -117,10 +118,14 @@ DATABASES = {
         "PORT": "3306",
 
     }
-      
-         
-    
-
+    }
+else:
+       DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('database_url'), 
+        conn_max_age=600, 
+        ssl_require=True
+    )
 }
 
 
